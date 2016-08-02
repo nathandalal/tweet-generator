@@ -23,12 +23,12 @@ def __format_tweet(search_result):
 #
 #
 #
-def get_tweets(limit = 1000, duration = 1, formatted = True):
+def get_tweets(limit = 1500, duration = 1, formatted = True):
 	tweets = __api.home_timeline(result_type="popular", count=limit)
 	if formatted:
 		tweets = map(__format_tweet, tweets)
 	return tweets
 
-def publish_tweet(tweet = 'Hello Twitter Universe! #blessed'):
+def publish_tweet(tweet):
 	print tweet
-	#__api.update_status(tweet)
+	__api.update_status(tweet)
