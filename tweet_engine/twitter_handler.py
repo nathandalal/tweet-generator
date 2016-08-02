@@ -14,16 +14,16 @@ def __format_tweet(search_result):
 	text = search_result.text
 	return text
 
-# 	
+#
 #	returns top retweeted tweets
 #
 #	params:
 #		limit -> number of tweets (changed to multiple of 50)
 # 		duration -> over how many days
 #
-#		
 #
-def get_tweets(limit = 250, duration = 1, formatted = True):
+#
+def get_tweets(limit = 1000, duration = 1, formatted = True):
 	tweets = __api.home_timeline(result_type="popular", count=limit)
 	if formatted:
 		tweets = map(__format_tweet, tweets)
