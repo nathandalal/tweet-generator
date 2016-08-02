@@ -86,20 +86,27 @@ class MainMap:
                 print word
 
     def generate_first_word(self):
-        max_count = 0
+        count = 0
+        temp_map = {}
         for word in self.map:
-            if (self.map[word].is_starter and self.map[word].count > max_count):
-                max_count = self.map[word].count
-                first_word = word
-        return first_word
+            if (self.map[word].is_starter):
+                count += self.map[word].count
+                temp_map[count] = word
+        random_num = randint(0, count)
+        for nums in temp_map:
+            if random_num < nums:
+                return temp_map[nums]
+
 
     def generate_next(self, word):
         word_obj = self.map[word]
-        max_count = 0
-        next_word = word_obj.next_words.keys()[0]
+        count = 0
+        temp_map = {}
         for poss_next in word_obj.next_words:
-            if (word_obj.next_words[poss_next] > max_count):
-                if (randint(0,9) > 2):
-                    next_word = poss_next
-                    max_count = word_obj.next_words[poss_next]
-        return next_word
+            count += word_obj.next_words[poss_next]
+            temp_map[count] = poss_next
+        random_num = randint(0, count)
+        for nums in temp_map:
+            if random_num < nums:
+                return temp_map[nums]
+        return temp_map[count]
