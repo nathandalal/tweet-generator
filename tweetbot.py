@@ -1,7 +1,5 @@
-from tweet_engine import tweetdb, tweetfetcher
+from tweet_engine import tweetdb, twitter_handler
 from datetime import date
 
-tweets = tweetfetcher.getTodayTweets()
-tweetdb.writetweets(tweets)
-print tweetdb.readtweet()
+tweets = twitter_handler.get_tweets()
 
