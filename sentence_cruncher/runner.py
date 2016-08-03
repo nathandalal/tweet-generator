@@ -35,4 +35,12 @@ def do_it():
     twitter_handler.publish_tweet(final_sentence)
 
 
-
+while True:
+    do_it()
+    time.sleep(300)
+    print '10 more minutes till tweet.'
+    time.sleep(300)
+    print '5 more minutes till tweet.'
+    time.sleep(240)
+    print '1 more minutes till tweet.'
+    time.sleep(60)
