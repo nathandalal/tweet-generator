@@ -33,14 +33,25 @@ def do_it():
     capitalize_first_word(new_sentence)
     final_sentence = turn_arr_to_sentence(new_sentence)
     twitter_handler.publish_tweet(final_sentence)
+    return final_sentence
 
 
 while True:
-    do_it()
-    time.sleep(300)
-    print '10 more minutes till tweet.'
-    time.sleep(300)
-    print '5 more minutes till tweet.'
-    time.sleep(240)
-    print '1 more minutes till tweet.'
-    time.sleep(60)
+    try:
+        f = open('workfile', 'w')
+        currSent = do_it()
+        f.write(currSent)
+        f.close()
+        print '5 more minutes till tweet.'
+        time.sleep(60)
+        print '4 more minutes till tweet.'
+        time.sleep(60)
+        print '3 more minutes till tweet.'
+        time.sleep(60)
+        print '2 more minutes till tweet.'
+        time.sleep(60)
+        print '1 more minutes till tweet.'
+        time.sleep(60)
+        print 'now!'
+    except:
+        print 'error'
