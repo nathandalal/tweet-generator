@@ -1,4 +1,6 @@
 from flask import Flask
+import threading
+import runner
 import time
 
 app = Flask(__name__)
@@ -10,6 +12,13 @@ def hello_world():
     text = f.read()
     f.close()
     return text
+threads = []
+
+def worker():
+    runner.run()
 
 if __name__ == "__main__":
-    app.run()
+    t = threading.Thread(target=worker)
+    t.start()
+    app.run(host='0.0.0.0')
+

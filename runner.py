@@ -36,22 +36,23 @@ def do_it():
     return final_sentence
 
 
-while True:
-    try:
-        f = open('workfile', 'w')
-        currSent = do_it()
-        f.write(currSent)
-        f.close()
-        print '5 more minutes till tweet.'
-        time.sleep(60)
-        print '4 more minutes till tweet.'
-        time.sleep(60)
-        print '3 more minutes till tweet.'
-        time.sleep(60)
-        print '2 more minutes till tweet.'
-        time.sleep(60)
-        print '1 more minutes till tweet.'
-        time.sleep(60)
-        print 'now!'
-    except:
-        print 'error'
+def run():
+    while True:
+        try:
+            f = open('workfile', 'w')
+            currSent = do_it()
+            f.write(currSent)
+            f.close()
+            print '5 more minutes till tweet.'
+            time.sleep(60)
+            print '4 more minutes till tweet.'
+            time.sleep(60)
+            print '3 more minutes till tweet.'
+            time.sleep(60)
+            print '2 more minutes till tweet.'
+            time.sleep(60)
+            print '1 more minutes till tweet.'
+            time.sleep(60)
+            print 'now!'
+        except:
+            print 'error'
