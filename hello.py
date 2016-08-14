@@ -1,6 +1,7 @@
+from tweet_engine import runner
+
 from flask import Flask, render_template
 import threading
-import runner
 import time
 
 app = Flask(__name__)
