@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import threading
 import runner
 import time
@@ -11,7 +11,8 @@ def hello_world():
     f = open('workfile', 'r');
     text = f.read()
     f.close()
-    return text
+    text = "\"" + text + "\""
+    return render_template('index.html', tweet=text)
 threads = []
 
 def worker():
