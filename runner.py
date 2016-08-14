@@ -8,7 +8,7 @@ def capitalize_first_word(self):
     self[0] = self[0].title()
 
 def turn_arr_to_sentence(self):
-    return ' '.join(self) + '.'
+    return ' '.join(self)
 
 def process_all_tweets(map, tweets):
     for sent in tweets:
