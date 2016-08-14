@@ -22,5 +22,4 @@ def worker():
 if __name__ == "__main__":
     t = threading.Thread(target=worker)
     t.start()
-    app.run(host='0.0.0.0')
-
+    app.run(host='0.0.0.0', port=80)
