@@ -1,7 +1,5 @@
-from structures import Word
-from structures import MainMap
-from tweet_engine import tweetdb, twitter_handler
-from datetime import date
+from structures import Word, MainMap
+import twitter_handler
 import time
 
 def capitalize_first_word(self):
@@ -15,9 +13,12 @@ def process_all_tweets(map, tweets):
         map.process_sentence(sent)
 
 def do_it():
+    print 'Entering do_it().'
     tweets = twitter_handler.get_tweets()
+    print 'Got tweets.'
     map = MainMap()
     process_all_tweets(map, tweets)
+    print 'Processed all tweets.'
     first_word = map.generate_first_word()
     currWord = map.generate_next(first_word)
     char_count = len(currWord)
@@ -29,20 +30,25 @@ def do_it():
             char_count += len(currWord)
             if '.' in currWord:
                 break
-
+    print 'Created sentence.'
     capitalize_first_word(new_sentence)
     final_sentence = turn_arr_to_sentence(new_sentence)
     twitter_handler.publish_tweet(final_sentence)
+    print 'Tweet published.'    
     return final_sentence
 
 
 def run():
-    while True:
+    errorCount = 0
+    while errorCount < 10:
         try:
             f = open('workfile', 'w')
+            print 'Opened file!'
             currSent = do_it()
             f.write(currSent)
+            print 'Wrote to file!'
             f.close()
+            print 'Closed file!'
             print '5 more minutes till tweet.'
             time.sleep(60)
             print '4 more minutes till tweet.'
@@ -55,4 +61,9 @@ def run():
             time.sleep(60)
             print 'now!'
         except:
-            print 'error'
+            print 'An error has occurred.'
+            errorCount += 1
+            time.sleep(300)
+
+if __name__ == "__main__":
+    run()
